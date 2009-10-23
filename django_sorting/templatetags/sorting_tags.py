@@ -1,6 +1,7 @@
 from django import template
 from django.http import Http404
 from django.conf import settings
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -10,9 +11,9 @@ INVALID_FIELD_RAISES_404 = getattr(settings,
         'SORTING_INVALID_FIELD_RAISES_404' , False)
 
 sort_directions = {
-    'asc': {'icon':DEFAULT_SORT_UP, 'inverse': 'desc'}, 
-    'desc': {'icon':DEFAULT_SORT_DOWN, 'inverse': 'asc'}, 
-    '': {'icon':DEFAULT_SORT_DOWN, 'inverse': 'asc'}, 
+    'asc': {'icon': mark_safe(DEFAULT_SORT_UP), 'inverse': 'desc'}, 
+    'desc': {'icon': mark_safe(DEFAULT_SORT_DOWN), 'inverse': 'asc'}, 
+    '': {'icon': mark_safe(DEFAULT_SORT_DOWN), 'inverse': 'asc'}, 
 }
 
 
